@@ -158,9 +158,10 @@
             for (i = 0; i < files.length; i++) {
                 if(isImage(files[i])) {
                     var info = document.createElement("span");
-                    info.setAttribute("class", "picture-name");
+                    info.className = "picture-name";
                     let image = document.createElement("ul");
                     let name = document.createElement("ul");
+                    image.className = "picture-thumbnail";
                     list.appendChild(image);
                     list.appendChild(name);
                     
@@ -206,28 +207,26 @@
         if(currentFile) {
             modal.style.display = "block";
             mapElement.style.height = "0px";
-            var pictureTitle = document.getElementById("picture-title");
+            var pictureTitle = document.getElementById("modal-picture-title");
             pictureTitle.innerHTML = currentFile.name;
-            var pictureInfos = document.getElementById("picture-infos");
+            var pictureInfos = document.getElementById("modal-picture-infos");
             pictureInfos.innerHTML = "";
             let img = document.createElement("img");
+            img.className = "modal-picture-img";
             img.src = window.URL.createObjectURL(currentFile);
             img.onload = function() {
                 window.URL.revokeObjectURL(this.src);
             }
             pictureInfos.appendChild(img);
-            EXIF.getData(currentFile, function() {
-                
+            EXIF.getData(currentFile, function() {            
                 const size = convertSizeForDisplay(currentFile.size);
                 
-                
                 let infos = document.createElement("p");
-                infos.setAttribute("class", "picture-data");
+                infos.className = "modal-picture-data";
                 let imageInfos = `Taille du fichier: ${size}`;
                 
                 const width = EXIF.getTag(currentFile, "PixelXDimension");
                 const height = EXIF.getTag(currentFile, "PixelYDimension");
-                
                 if(width && height) {
                     imageInfos += `<br>Dimension de l'image: ${width}x${height} pixels<br>`;
                 } 

@@ -45,9 +45,12 @@ hr {
 
 #fileList {
     background-color: powderblue;
-    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
+    max-height: 600px;
+    overflow: auto;
 }
 
 #data { 
@@ -88,7 +91,7 @@ hr {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 50px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -98,36 +101,46 @@ hr {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
 .modal-content {
 background-color:rgba(0,0,0,0.75);
 margin: auto;
 padding: 20px;
 border: 1px solid #888;
 width: 75%;
+color: white;
 }
 
-#picture-infos {
+#modal-picture-infos {
     display: flex;
     flex-direction: row;
 }
 
-.picture-data {
+.modal-picture-data {
     padding-left: 15px;
-    align-self: end;
     color: cornsilk;
+    flex:1;
+    min-width: 300px;
 }
 
-#picture-title {
+#modal-picture-title {
     color: cornsilk;
     text-align: center;
+}
+
+.modal-picture-img {
+    height: auto;
+    flex: 3;
+    image-orientation: from-image;
 }
 
 .picture-name {
     font-size: small;
 }
 
-/* The Close Button */
+.picture-thumbnail {
+    image-orientation: from-image;
+}
+
 .close {
 color: #aaaaaa;
 float: right;
